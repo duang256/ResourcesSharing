@@ -8,4 +8,5 @@ public interface PostService {
 	List<Post> selAllPost();
 	List<String> selAllComment(int id);
 	void insComment(int pid,String comment);
+	void insQuestion(Post post);
 }

@@ -55,6 +55,43 @@
 	       
 </script>
 
+<script type="text/javascript">
+//第一步，创建XMLHttpRequest对象
+var xmlHttp = new XMLHttpRequest();
+
+   function addQuestion() {
+   	
+   	var question=$("#question").val();
+   	var url="/resourcesSharing/addQuestion?question="+question;
+       //get请求
+       xmlHttp.open("post",url, true);
+       xmlHttp.send();
+       
+   	
+       xmlHttp.onreadystatechange = function(){
+       	if(xmlHttp.status == 200 && xmlHttp.readyState == 4){ 
+       		var xmlDoc=xmlHttp.responseText;
+       		var data=eval(xmlDoc);
+       		var result="论坛<br><hr color='#000000'>";
+       		for(var i=0;i<data.length;i++){
+      				result+="问题："+data[i].question +"<br><br>评论：<br>";
+      				var comments=data[i].comment;
+      				for(var j=0;j<comments.length;j++){
+      					result+=comments[j]+"<br>";
+      				}
+      				result+="<input  stype='text' id='comment' class=" + data[i].id +" placeholder='输入评论'>";
+      				result+="<button onclick='comment(this,"+data[i].id+");'>发表</button>";
+      				result+="<hr color='#000000'>";
+      				
+      		} 
+      			$("#articles").html(result);     
+      			
+       	}
+      }
+      $("#question").attr("value","");   
+   }
+
+</script>
 
 
 
@@ -130,6 +167,15 @@ body{
 				<hr color="#000000">
 			</c:forEach> 
 		</div>
+		
+		
+		
+		<!--发表问题  -->
+		<div>
+			<input type="text" id="question"><br>
+			<button onclick="addQuestion(this);" >发表</button>
+		</div>
+		
 		
 		
 	</div>

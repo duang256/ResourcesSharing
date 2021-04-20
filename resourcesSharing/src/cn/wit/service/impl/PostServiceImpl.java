@@ -31,4 +31,9 @@ public class PostServiceImpl implements PostService{
 		postMapper.insComment(pid, comment);
 	}
 
+	@Override
+	public void insQuestion(Post post) {
+		postMapper.insPost(post);
+	}
+
 }

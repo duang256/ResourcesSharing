@@ -18,9 +18,7 @@ public interface UserMapper {
 	@Insert("insert into user values(default,#{username},#{password},#{registerTime},'',1,'',0)")
 	void insUser(User user);
 	//更改用户信息
-	@Update("update user set username="
-			+ "#{username},registerTime=#{registerTime},centainFields=#{centainFields},sex=#{sex},birthday=#{birthday} "
-			+ "where id=#{id}")
+	@Update("update user set username=#{username},registerTime=#{registerTime},centainFields=#{centainFields},sex=#{sex},birthday=#{birthday} where id=#{id}")
 	void updateUserInfo(User user);
 	
 }

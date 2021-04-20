@@ -41,6 +41,27 @@ public class PostController {
 		return posts;
 	}
 	
+	//新增问题
+	@RequestMapping("/addQuestion")
+	@ResponseBody
+	public List<Post> addQuestion(Post post,HttpServletRequest request){
+		//数据库新增问题
+		post.setLabel("java");
+		postService.insQuestion(post);
+		
+		
+		//更新论坛
+				List<Post> posts = postService.selAllPost();
+				for (Post p : posts) {
+					List<String> comments = postService.selAllComment(p.getId());
+					p.setComment(comments);
+				}
+				request.setAttribute("posts", posts);
+				return posts;
+		
+	}
+	
+	
 	
 	
 }

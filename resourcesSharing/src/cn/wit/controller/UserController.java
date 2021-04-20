@@ -96,6 +96,9 @@ public class UserController {
 	public String updateUserInfo(User user,HttpServletRequest request){
 		User u=(User) request.getSession().getAttribute("user");
 		user.setId(u.getId());
+		user.setRoot(0);
+		request.getSession().setAttribute("user", user);
+		
 		try{
 			userService.updateUserInfo(user);
 			return "redirect:/home.jsp";
