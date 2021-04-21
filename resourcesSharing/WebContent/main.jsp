@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ResourcesSharing</title>
-<link rel="stylesheet" href="css/main.css">
 <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
 <script type="text/javascript">
 //对所有父菜单添加点击事件
@@ -38,13 +37,13 @@
 	            		var data=eval(xmlDoc);
 	            		var result="论坛<br><hr color='#000000'>";
 	            		for(var i=0;i<data.length;i++){
-	 	      				result+="问题："+data[i].question +"<br><br>评论：<br>";
+	 	      				result+="问题"+(i+1)+"："+data[i].question +"<br><br>";
 	 	      				var comments=data[i].comment;
 	 	      				for(var j=0;j<comments.length;j++){
-	 	      					result+=comments[j]+"<br>";
+	 	      					result+=(j+1)+"楼："+comments[j]+"<br>";
 	 	      				}
 	 	      				result+="<input  stype='text' id='comment' class=" + data[i].id +" placeholder='输入评论'>";
-	 	      				result+="<button onclick='comment(this,"+data[i].id+");'>发表</button>";
+	 	      				result+="<a onclick='comment(this,"+data[i].id+");'><img src='images/comment.png'></a>";
 	 	      				result+="<hr color='#000000'>";
 	 	      				
 	 	      			} 
@@ -74,13 +73,13 @@ var xmlHttp = new XMLHttpRequest();
        		var data=eval(xmlDoc);
        		var result="论坛<br><hr color='#000000'>";
        		for(var i=0;i<data.length;i++){
-      				result+="问题："+data[i].question +"<br><br>评论：<br>";
+       				result+="问题"+(i+1)+"："+data[i].question +"<br><br>";
       				var comments=data[i].comment;
       				for(var j=0;j<comments.length;j++){
-      					result+=comments[j]+"<br>";
+      					result+=(j+1)+"楼："+comments[j]+"<br>";
       				}
       				result+="<input  stype='text' id='comment' class=" + data[i].id +" placeholder='输入评论'>";
-      				result+="<button onclick='comment(this,"+data[i].id+");'>发表</button>";
+      				result+="<a onclick='comment(this,"+data[i].id+");'><img src='images/comment.png'></a>";
       				result+="<hr color='#000000'>";
       				
       		} 
@@ -102,22 +101,114 @@ body{
     background-image: url("images/mainBackground.jpg");
     background-size: cover;
 }
+/* 标题 */
+.header {
+    padding: 30px;
+    text-align: center;
+    color: white;
+    
+}
+.top{
+	width:100%;
+	height:40px;
+	background-color: #E6E6E6;
+	margin-bottom: 20px;
+	border-radius: 5px;
+}
+
+/* 底部 */
+.footer {
+    padding: 10px;
+    text-align: center;
+    background: #FFFFFF;
+    border-radius: 10px;
+}
+
+
+ .box{
+ 	padding:20px;
+ }
+ 
+.resource{
+	
+	margin-right:100px;
+	display: flex;
+	width:25%;
+	position:fixed;
+	margin-bottom: 20px;
+	border-radius: 5px;
+
+}
+.staticResource{
+	width:300px;
+	margin-right: 15px;
+	background-color: #FFFFFF;
+	border-radius: 10px;
+	height: 700px;
+}
+.content{
+	display: flex;
+}
+.dynamicResource{
+	background-color: #FFFFFF;
+	width:300px;
+	border-radius: 10px;
+	height: 700px;
+	
+	
+}
+.article{
+	width:1000px;
+	background-color: #F2F2F2;
+	border-radius: 5px;
+	background-color: #FFFFFF;
+	padding-left: 10px;
+}
+.navigator{
+	margin-bottom: 20px;
+	margin-right: 80px;
+	float:right; 
+	margin-top:20px;
+}
+#question{
+	width: 990px;
+	height: 100px;
+	resize:none;
+	border-radius: 5px;
+	font-size: 16px;
+	padding:5px;
+	
+}
+#comment{
+	width:200px;
+	margin-bottom: 5px;
+}
+#posts{
+	margin-left: 650px;
+}
 </style>
 </head>
 <body>
 
+
+<div class="navigator">
+	 <a  href="/resourcesSharing/userHome"><img  src="images/home.png"></a>
+</div>
+<div class="header">
+  <h1>论坛</h1>
+</div>
+
 <div class="box">
-<!-- 头部 --> 
-	<div class="top">
-		<a href="/resourcesSharing/userHome">个人中心</a>
-	</div>
+
+
 
 <!-- 主要内容  -->
 	<div class="content">
 		<!--资源模块  -->
 		<div class="resource">
 			<!--静态资源  -->
-			<div class="staticResource">静态资源
+			<div class="staticResource">
+			<h3 align="center">静态资源</h3>
 				<dl>
 					<dt style="cursor:pointer">Java</dt>
 					<c:forEach items="${javaResource}" var="java">
@@ -146,44 +237,47 @@ body{
 			</div>
 			
 			<!--动态资源  -->
-			<div class="dynamicResource">动态资源</div>
+			<div class="dynamicResource">
+				<h3 align="center">动态资源</h3>
+			</div>
 		</div>
 		
 		
+		
+		<div id="posts">
+		
+			<!--发表问题  -->
+			<div>
+				<textarea id="question" rows="" cols="" placeholder="发表一个提问"></textarea><br>
+				<a  onclick="addQuestion(this);" style="margin-left: 10px"><img src="images/question.png"></a>
+			</div>
+			
+			<!--论坛模块  -->
+			<div class="article" id="articles"><br>
+				 <hr color="#000000">
+				 <c:forEach items="${posts}" var="post" varStatus="sta">
+					问题${sta.index+1}：${post.question } <br><br>
+					<c:forEach items="${post.comment }" var="comment" varStatus="status">
+						       ${status.index+1}楼： ${comment}<br>
+					</c:forEach><br>
+					<input  type="text" id="comment" class="${post.id}" placeholder="输入评论">  
+					<a  onclick="comment(this,${post.id});"><img src="images/comment.png"></a>
+					<hr color="#000000">
+				</c:forEach> 
+			</div>
+			
+			<div class="footer">
+			   <span>仅供学习交流，请勿用于任何商业用途</span>
+			    <i>如果有任何问题，请联系管理员QQ:2608194130</i>
+			</div>
+		
+		</div>
 		 
 		
-		
-		<!--论坛模块  -->
-		<div class="article" id="articles">论坛<br>
-		<hr color="#000000">
-			 <c:forEach items="${posts}" var="post">
-				问题${post.id }：${post.question } <br><br>
-				评论：<br>
-				<c:forEach items="${post.comment }" var="comment">
-					${comment}<br>
-				</c:forEach><br>
-				<input  type="text" id="comment" class="${post.id}" placeholder="输入评论">  
-				<button onclick="comment(this,${post.id});">发表</button>
-				<hr color="#000000">
-			</c:forEach> 
-		</div>
-		
-		
-		
-		<!--发表问题  -->
-		<div>
-			<input type="text" id="question"><br>
-			<button onclick="addQuestion(this);" >发表</button>
-		</div>
-		
-		
-		
 	</div>
-<!-- 尾部  -->
-	<div class="footer">
-    <span>仅供学习交流，请勿用于任何商业用途</span>
-    <i>如果有任何问题，请联系管理员QQ:2608194130</i>    
-    </div> 
+	
+
+    
 	
 </div> 
 

@@ -23,7 +23,7 @@
 <br><br>
 修改密码：
 <form action="/resourcesSharing/updatepassword" method="post">
-	原密码：<input name="oldPassword" type="Password"><br>
+	原密码：<input name="oldPassword" type="password"><br>
 	新密码：<input name="newPassword" type="password"><br>
 	<input type="submit" value="提交">
 </form>

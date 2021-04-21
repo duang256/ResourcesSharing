@@ -11,9 +11,18 @@ body{
     background-image: url("images/loginBackground.jpg");
     background-size: cover;
 }
+/* 标题 */
+.header {
+    padding-top: 150px;
+    text-align: center;
+    color: white;
+}
 </style>
 </head>
 <body>
+<div class="header">
+  <h1>论坛</h1>
+</div>
 <div class="box">
  <form class="form-box" action="/resourcesSharing/login" method="post">
     <div class="inputBox">

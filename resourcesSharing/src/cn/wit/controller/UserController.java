@@ -84,7 +84,7 @@ public class UserController {
 			}else{
 				System.out.println("—È÷§ ß∞‹");
 			}
-			return "redirect:/home.jsp";
+			return "redirect:/login.jsp";
 		}catch(Exception e){
 			return "error";
 		}

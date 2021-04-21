@@ -1,3 +1,9 @@
+/* БъЬт */
+.header {
+    padding: 30px;
+    text-align: center;
+    color: white;
+}
 .top{
 	width:100%;
 	height:40px;
@@ -6,12 +12,11 @@
 	border-radius: 5px;
 }
 .content{
-	
 }
 
 .footer{
 	width:100%;
-	height:20px;
+	height:50px;
 	position: fixed;
 	background-color: #E6E6E6;
 	top:900px;
@@ -47,6 +52,6 @@
 	
 }
 .article{
-	width:3500px;
+	width:1000px;
 	background-color: maroon;
 }
