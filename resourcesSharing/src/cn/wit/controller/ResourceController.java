@@ -18,8 +18,8 @@ public class ResourceController {
 	public String mysql(){
 		return "resources/articleResources/mysqlAction";
 	}
-	@RequestMapping("/leetcode")
+	@RequestMapping("/leetcode135")
 	public String algorithmInstall(){
-		return "resources/articleResources/leetcode";
+		return "resources/articleResources/leetcode135";
 	}
 }

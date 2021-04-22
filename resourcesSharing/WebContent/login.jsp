@@ -6,17 +6,32 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>ResourcesSharing</title>
 <link rel="stylesheet" href="css/login.css">
+<script type="text/javascript">
+	function loginMouseOver(login){
+		login.setAttribute('style', 'background-color:#2E9AFE');
+	}
+	function loginMouseOut(login){
+		login.setAttribute('style', 'background-color:#D8D8D8');
+	}
+</script>
 <style>
 body{
     background-image: url("images/loginBackground.jpg");
     background-size: cover;
 }
-/* 标题 */
 .header {
     padding-top: 150px;
     text-align: center;
     color: white;
 }
+.login{
+	background-color: #D8D8D8;
+	margin-bottom: 15px;
+}
+
+
+
+/* 标题 */
 </style>
 </head>
 <body>
@@ -31,9 +46,13 @@ body{
     <div class="inputBox">
         <input type="password" name="password" placeholder="密码" required="">
     </div>
-    <input type="submit"  value="提交">
-    <!--注册  -->
- 	<a href="/resourcesSharing/register.jsp" >注册</a>
+    <div align="center"  class="login" onmouseover="loginMouseOver(this)" onmouseout="loginMouseOut(this)">
+   		 <input type="submit" style="color: #000000" value="登录">
+    </div>
+    <div align="right">
+	    <!--注册  -->
+	 	<a href="/resourcesSharing/register.jsp" style="color: #FFFFFF">注册</a>
+    </div>
  </form>
   </div>
 </body>

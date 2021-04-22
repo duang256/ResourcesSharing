@@ -13,6 +13,19 @@
  $("dt").live("click",function(){
 	$(this).siblings().slideToggle();
 }) 
+
+function commentMouseOver(commentImg){
+	 commentImg.setAttribute("src", "images/comment2.png");
+}
+function commentMouseOut(commentImg){
+	commentImg.setAttribute("src", "images/comment.png");
+}
+function questionMouseOver(questionImg){
+	questionImg.setAttribute("src", "images/question2.png");
+}
+function questionMouseOut(questionImg){
+	questionImg.setAttribute("src", "images/question.png");
+}
 </script>
 
 
@@ -23,7 +36,6 @@
 		 var xmlHttp = new XMLHttpRequest();
 		
 	        function comment(deliver,pid) {
-	        	
 	        	var comment=$("."+pid).val();
 	        	var url="/resourcesSharing/comment?pid="+pid+"&comment="+comment;
 	            //get请求
@@ -165,9 +177,11 @@ body{
 	padding-left: 10px;
 }
 .navigator{
+
+	position:fixed;
+	right:50px;
 	margin-bottom: 20px;
 	margin-right: 80px;
-	float:right; 
 	margin-top:20px;
 }
 #question{
@@ -177,14 +191,26 @@ body{
 	border-radius: 5px;
 	font-size: 16px;
 	padding:5px;
+	margin-bottom: 50px;
 	
 }
 #comment{
-	width:200px;
+	width:300px;
+	border-radius: 5px;
 	margin-bottom: 5px;
 }
 #posts{
 	margin-left: 650px;
+}
+a{
+	text-decoration:none;
+	color: #000000;
+	cursor: pointer;
+}
+.questionImg{
+	position:absolute;
+	top:290px;
+	left:1600px;
 }
 </style>
 </head>
@@ -192,13 +218,14 @@ body{
 
 
 <div class="navigator">
-	 <a  href="/resourcesSharing/userHome"><img  src="images/home.png"></a>
+	 <a   href="/resourcesSharing/userHome"><img  src="images/home.png"></a>
 </div>
 <div class="header">
   <h1>论坛</h1>
 </div>
 
 <div class="box">
+
 
 
 
@@ -229,9 +256,9 @@ body{
 					</c:forEach>
 				</dl>
 				<dl>
-					<dt style="cursor:pointer">Algorithm</dt>
+					<dt style="cursor:pointer">算法</dt>
 					<c:forEach items="${algorithmResource}" var="algorithm">
-						<dd>  <a href="/resourcesSharing/leetcode">${algorithm.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/leetcode135">${algorithm.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 			</div>
@@ -248,8 +275,10 @@ body{
 		
 			<!--发表问题  -->
 			<div>
-				<textarea id="question" rows="" cols="" placeholder="发表一个提问"></textarea><br>
-				<a  onclick="addQuestion(this);" style="margin-left: 10px"><img src="images/question.png"></a>
+				<textarea  id="question" rows="" cols="" placeholder="发表一个提问"></textarea><br>
+				<a class="questionImg"  onclick="addQuestion(this);" style="margin-left: 10px"  >
+					<img onmouseover="questionMouseOver(this)" onmouseout="questionMouseOut(this)" src="images/question.png">
+				</a>
 			</div>
 			
 			<!--论坛模块  -->
@@ -261,7 +290,9 @@ body{
 						       ${status.index+1}楼： ${comment}<br>
 					</c:forEach><br>
 					<input  type="text" id="comment" class="${post.id}" placeholder="输入评论">  
-					<a  onclick="comment(this,${post.id});"><img src="images/comment.png"></a>
+					<a  onclick="comment(this,${post.id});">
+						<img  onmouseover="commentMouseOver(this)" onmouseout="commentMouseOut(this)" src="images/comment.png">
+					</a>
 					<hr color="#000000">
 				</c:forEach> 
 			</div>

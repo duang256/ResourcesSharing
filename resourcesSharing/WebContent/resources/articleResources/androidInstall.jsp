@@ -1,68 +1,215 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>androidStudio安装</title>
+<style type="text/css">
 
+body {
+    background-image: url("images/mainBackground.jpg");
+    background-size: cover;
+}
+.box{
+	background-color: white;
+	margin-left:100px;
+	margin-right:100px;
+	margin-top:50px;
+	padding:30px;
+}
+p{
+	font-size: 18px;
+    color: #4d4d4d;
+    font-weight: 400;
+    line-height: 26px;}
+</style>
 </head>
 <body>
 
-<div id="content_views" class="htmledit_views">
-                    <p><strong>一 进入官网</strong></p> 
-<p>进入<a href="">Android Studio官网</a>，选择&nbsp;<strong>Android Studio</strong>&nbsp;点击进去；</p> 
-<p><img alt="" class="has" height="195" src="https://img-blog.csdnimg.cn/20190903104622142.png" width="1192"></p> 
-<p><strong>二 下载</strong></p> 
-<p>&nbsp;<strong>Android Studio —— DOWNLOAD —— DOWNLOAD ANDROID STUDIO(</strong>来进行下载，下载的是最新版本<strong>)</strong></p> 
-<p><img alt="" class="has" height="757" src="https://img-blog.csdnimg.cn/20190903104744619.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="1200"></p> 
-<p>勾选同意协议，点击开始下载</p> 
-<p><img alt="" class="has" height="855" src="https://img-blog.csdnimg.cn/20190903104817873.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="1200"></p> 
-<p>&nbsp;</p> 
-<p><strong>三 安装Android Studio</strong></p> 
-<p>1.双击安装软件，打开后点击&nbsp;<strong>Next</strong>&nbsp;继续下一步；</p> 
-<p>2.在安装到第二步的时候，会出现以下界面</p> 
-<p>&nbsp; &nbsp; Android Virtual Device，是系统自带模拟器，如果不用系统模拟器就不勾选，自己下载其他模拟器（这里选择的是勾选）；</p> 
-<p><img alt="" class="has" height="470" src="https://img-blog.csdnimg.cn/2019090311253849.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="613"></p> 
-<p>3.如果需要修改安装目录，可点击 Browse..修改，点击&nbsp;<strong>Next</strong>&nbsp;继续下一步；</p> 
-<p>4.等待安装配置完成，点击&nbsp;<strong>Next</strong>&nbsp;继续下一步；</p> 
-<p>5.点击&nbsp;<strong>Install</strong>&nbsp;安装；</p> 
-<p>&nbsp;</p> 
-<p><strong>四&nbsp;导入设置文件</strong></p> 
-<p>如果是第一次安装AS，还需要继续进行下面配置安装</p> 
-<p><img alt="" class="has" height="193" src="https://img-blog.csdnimg.cn/20190903122253931.png" width="456"></p> 
-<p>点击&nbsp;<strong>OK</strong>&nbsp;继续下一步，如果本地有AS的设置文件&nbsp;<strong>setting.jar</strong>，勾选第一项选择设置文件导入，如果没有设置文件，勾选第二项不导入设置文件；</p> 
-<p>&nbsp;</p> 
-<p><img alt="" class="has" height="133" src="https://img-blog.csdnimg.cn/20190903122426707.png" width="401"></p> 
-<p><strong>找不到SDK错误提示</strong><br> 在启动的时候会弹出错误弹框提示，点击&nbsp;<strong>Cancel</strong>；</p> 
-<p>&nbsp;</p> 
-<p><strong>五 AS的安装向导界面</strong></p> 
-<p>&nbsp;</p> 
-<p>1.点击&nbsp;<strong>Next</strong>&nbsp;继续下一步；</p> 
-<p><img alt="" class="has" height="740" src="https://img-blog.csdnimg.cn/20190903122719809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="973"></p> 
-<p>&nbsp;</p> 
-<p>2.选择安装类型<br> 可选择&nbsp;<strong>Standard</strong>（标准） 或&nbsp;<strong>Custom</strong>（自定义） 类型安装（这里选择的是<strong>Standard</strong>）；</p> 
-<p><img alt="" class="has" height="729" src="https://img-blog.csdnimg.cn/20190903122819525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="977"></p> 
-<p>3.<strong>选择主题模板</strong></p> 
-<p><img alt="" class="has" height="727" src="https://img-blog.csdnimg.cn/20190903122951308.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="950"></p> 
-<p>4.<strong>安装SDK</strong><br> 选择所需要的安装组件，点击&nbsp;<strong>Next</strong>&nbsp;继续下一步。如果没有安装 SDK，会默认安装 SDK 到C盘，下载最新的版本，不可修改。如果已安装 SDK，会自动指定 SDK的本地路径；</p> 
-<p>&nbsp;</p> 
-<p><img alt="" class="has" height="743" src="https://img-blog.csdnimg.cn/20190903150331961.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="983"></p> 
-<p>&nbsp;</p> 
-<p><strong>5.SDK下载配置</strong><br> 确认安装配置，点击&nbsp;<strong>Finish</strong>&nbsp;继续下一步；</p> 
-<p><img alt="" class="has" height="737" src="https://img-blog.csdnimg.cn/2019090315061696.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="977"></p> 
-<p>6&nbsp;&nbsp;<strong>SDK下载完成</strong><br> 点击&nbsp;<strong>Finish</strong>&nbsp;完成</p> 
-<p><img alt="" class="has" height="253" src="https://img-blog.csdnimg.cn/20190903154652868.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="930"></p> 
-<p>&nbsp;</p> 
-<p>7&nbsp;&nbsp;<strong>AS欢迎界面</strong></p> 
-<p><img alt="" class="has" height="614" src="https://img-blog.csdnimg.cn/20190903155812565.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="838"></p> 
-<p>8&nbsp; 更换，下载SDK</p> 
-<p>在欢迎页右下角，选择 "Configure" —&gt; "SDK Manager"</p> 
-<p><img alt="" class="has" height="471" src="https://img-blog.csdnimg.cn/20190903160013927.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="856"></p> 
-<p>设置SDK存放目录，以及更换下载Android版本</p> 
-<p><img alt="" class="has" height="879" src="https://img-blog.csdnimg.cn/20190903160135726.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzM3MTM4NzU2,size_16,color_FFFFFF,t_70" width="1200"></p> 
-<p>&nbsp;</p>
-                </div>
+<div class="box">
+	
 
+<p >
+android studio安装教程，史上最详细(超多图)！！<br>
+安装android studio，史上最详细(超多图)！！<br>
+<br><br>
+</p>
+
+
+
+<p >
+1、首先下载Android studio安装包，可以从 http://www.android-studio.org/ 下载3.5.2版本，这里采用3.5.2版本进行演示，安装包大小718 MB.
+<br><br>
+</p>
+
+<img src="images/androidInstall_1.png" >
+<br><br>
+	
+<p >
+3.下载后进行安装<br>
+将按照下列步骤进行：
+<br><br>
+</p>	
+	
+<img src="images/androidInstall_2.png" >
+<br><br>	
+<img src="images/androidInstall_3.png" >
+<br><br>	
+
+<p >
+下面一步是安装路径的选择，个人建议内存大的就不要乱换了，小编这里就放在了<br>
+D:\android\android studio<br>
+D:\android\android studio<br>
+D:\android\android studio<br>
+文件夹自己新建就好：
+<br><br>
+</p>
+
+<img src="images/androidInstall_4.png" >
+<br><br>	
+<img src="images/androidInstall_5.png" >
+<br><br>	
+
+
+<p >
+到此基础部分已经完成。<br>
+4.下面一定要逐步完成，一步一步仔细操作：<br>
+点选第二个<br>
+<br><br>
+</p>
+
+<img src="images/androidInstall_6.png" >
+<br><br>
+
+<p >
+然后会有各种提示，下一步到这里<br>
+安装选这个<br>
+custom<br>
+后续可以更改安装位置，否则，只能装在C盘<br>
+<br><br>
+</p>
+
+<img src="images/androidInstall_7.png" >
+
+<p >
+选择主题风格：
+<br><br>
+</p>
+
+<img src="images/androidInstall_8.png" >
+
+<p>
+下方安装路径如果需要更改的话<br>
+一定要改为没有标点符号，（空格之类千万不要有，另外，中文不能出现！！！！！本文所有路径，不能出现中文！！！！新手按照我的去安装就好，就不需要费心改变了）<br>
+勾选内容参考图中<br>
+<br><br>
+</p>
+<img src="images/androidInstall_9.png" >
+
+<p>
+内存的选择，我个人是16G的内存条啦，我就选了4096MB你们根据情况选择就好，最好不要低于2G（2048MB）
+<br><br>
+</p>
+
+<img src="images/androidInstall_10.png" >
+
+<p>
+到此下一步，开始疯狂跑安装：
+<br><br>
+</p>
+
+<img src="images/androidInstall_11.png" >
+
+<p>
+当然是选择完成啦！<br>
+终于见到了曙光!!<br>
+下图！<br>
+<br>
+</p>
+<img src="images/androidInstall_12.png" >
+
+<p>
+5.开始演示第一个hello world程序！<br>
+点击上图的start a new balabala…<br>
+演示为空白案例，不做其他模板展示！<br>
+<br><br>
+</p>
+<img src="images/androidInstall_13.png" >
+
+<p>
+项目名称，域名，语言，API等级，根据需要选择就好
+<br><br>
+</p>
+<img src="images/androidInstall_14.png" >
+
+<p>
+继续！<br>
+第一次安装会进行环境配置，会进行gradle<br>
+（这里可能很多同胞会失败，原因是在远程下载的gradle被墙了，可以参考我的另一篇博客android studio的安装（补充篇gradle失败的问题））<br>
+耐心等待就好<br>
+<br><br>
+</p>
+<img src="images/androidInstall_15.png" >
+
+<p>
+分析完成之后。点击右上角的锤子，然后点击三角形
+<br><br>
+</p>
+<img src="images/androidInstall_16.png" >
+
+
+
+<p>
+由于第一次安装，需要配置一个新的模拟器<br>
+（不懂模拟器没事，按照步骤来就好哈哈哈）<br>
+创建一个新虚拟设备（启动按钮右侧，AVDmanager）<br>
+<br><br>
+</p>
+<img src="images/androidInstall_17.png" >
+
+<p>
+选择想要的模板类型，强烈建议图中的两个，其他的，，，好丑哈哈
+<br><br>
+</p>
+<img src="images/androidInstall_18.png" >
+
+
+<p>
+继续选择图片素材<br>
+需要下载1个G左右！<br>
+下面按照图片进行操作即可！<br>
+<br><br>
+</p>
+<img src="images/androidInstall_19.png" >
+<img src="images/androidInstall_20.png" >
+<img src="images/androidInstall_21.png" >
+<img src="images/androidInstall_22.png" >
+
+<p>
+完成！<br>
+下面一步改名无关紧要直接完成即可！<br>
+此时前面那个选择虚拟设备画面已经有了一个设备，进行勾选！<br>
+<br><br>
+</p>
+<img src="images/androidInstall_23.png" >
+
+<p>
+看见这个画面<br>
+恭喜你，安卓旅程出发！<br>
+<br><br>
+</p>
+<img src="images/androidInstall_24.png" >
+
+<p>
+默认即为helloworld ！第一个程序完成!<br>
+不用任何操作！<br>
+<br><br>
+</p>
+<img src="images/androidInstall_25.png" >
+
+</div>
+
+	
 </body>
 </html>
