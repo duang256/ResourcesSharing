@@ -30,5 +30,15 @@ public class ResourceServiceImpl implements ResourceService{
 	public List<Resource> getAlgorithmResource() {
 		return resourceMapper.selAlgorithmResource();
 	}
+	
+	
+	@Override
+	public List<Resource> getAllDynamicResource() {
+		return resourceMapper.selAllDynamicReosource();
+	}
+	@Override
+	public void addDynamicResource(String name) {
+		 resourceMapper.insDynamicReosource(name);
+	}
 
 }

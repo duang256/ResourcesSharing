@@ -37,8 +37,10 @@ public class UserController {
 			System.out.println(user.getPassword());
 			User u = userService.checkUserLoginService(user);
 			if(u!=null){
+				//用户信息
 				request.getSession().setAttribute("user", u);
 				
+				//所有静态资源
 				List<Resource> javaResource = resourceService.getJavaResource();
 				List<Resource> androidResource = resourceService.getAndroidResource();
 				List<Resource> databaseResource = resourceService.getDatabaseResource();
@@ -48,12 +50,18 @@ public class UserController {
 				request.setAttribute("databaseResource", databaseResource);
 				request.setAttribute("algorithmResource", algorithmResource);
 				
+				//加载所有帖子
 				List<Post> posts = postService.selAllPost();
 				for (Post post : posts) {
 					List<String> comment = postService.selAllComment(post.getId());
 					post.setComment(comment);
 				}
 				request.setAttribute("posts", posts);
+				
+				//静态资源
+				List<Resource> dynamicResource=resourceService.getAllDynamicResource();
+				request.setAttribute("dynamicResource", dynamicResource);
+				
 				
 				return "main";
 			}else{

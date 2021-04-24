@@ -105,7 +105,37 @@ var xmlHttp = new XMLHttpRequest();
 </script>
 
 
+<script type="text/javascript"> 
 
+//第一步，创建XMLHttpRequest对象
+var xmlHttp = new XMLHttpRequest();
+
+   function upload() {
+	   var fileM=document.getElementById("file");
+	   var file=fileM.files[0];
+	   //创建formdata对象，formData用来存储表单的数据，表单数据时以键值对形式存储的。
+	   var formData=new FormData();
+	   alert(file);
+	   formData.append('file',file);
+	 //发送POST请求
+	   xmlHttp.open("post","/resourcesSharing//upload",true);
+	   xmlHttp.send(formData);
+	   xmlHttp.onreadystatechange=function(){
+			if(xmlHttp.status == 200 && xmlHttp.readyState == 4){ 
+	       		var xmlDoc=xmlHttp.responseText;
+	       		var data=eval(xmlDoc);
+	       		var result="";
+	            for(var i=0;i<data.length;i++){
+	           	 result+=data[i].name+"<a  href='download?file="+data[i].name+"'style='text-decoration:underline;color: blue;''>下载</a><br>";
+	            }
+	            $("#dynamicfiles").html(result);  
+	   		}
+ 	  	}
+	   
+	   fileM.value='';
+   }
+
+</script>
 
 
 <style>
@@ -212,6 +242,15 @@ a{
 	top:290px;
 	left:1600px;
 }
+dt{
+	background-color:#D8D8D8;
+	font-size: 25px;
+	padding-left: 5px;
+}
+dd{
+	font-size: 20px;
+}
+
 </style>
 </head>
 <body>
@@ -263,9 +302,22 @@ a{
 				</dl>
 			</div>
 			
+			
 			<!--动态资源  -->
 			<div class="dynamicResource">
 				<h3 align="center">动态资源</h3>
+				<!--上传  -->
+				<form  enctype="multipart/form-data" >
+					文件：<input type="file" name="file" id="file"><br>
+				</form> 
+				<button id="upload" onclick="upload()">上传文件</button>
+					
+				<div id="dynamicfiles">
+					<!--下载  -->
+					<c:forEach items="${dynamicResource}" var="dResource"> 
+						${dResource.name}<a  href="download?file=${dResource.name}"  style="text-decoration:underline;color: blue;">下载</a><br>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 		

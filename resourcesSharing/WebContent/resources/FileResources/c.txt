@@ -1,0 +1,29 @@
+ $("dt").live("click",function(){
+	$(this).siblings().slideToggle();
+}) 
+
+<dl>
+<dt style="cursor:pointer">Java</dt>
+	<dd>  Java1 </dd>
+	<dd>  Java2 </dd>
+</dl>
+
+<dl>
+<dt style="cursor:pointer">Android </dt>
+	<dd>  Android1 </dd>
+	<dd>  Android2 </dd>
+</dl>
+
+
+<dl>
+<dt style="cursor:pointer">Database</dd></dt>
+	<dd>  Database1</dd>
+	<dd>  Database2</dd>
+</dl>
+
+
+<dl>
+<dt style="cursor:pointer">算法</dt>
+	<dd>  算法1</dd>
+	<dd>  算法2</dd>
+</dl>

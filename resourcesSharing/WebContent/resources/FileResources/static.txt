@@ -1,0 +1,59 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.7.2.js"></script>
+<script type="text/javascript">
+$("dt").live("click",function(){
+	$(this).siblings().slideToggle();
+}) 
+</script>
+<style type="text/css">
+dt{
+	background-color:#D8D8D8;
+	font-size: 30px;
+}
+dd{
+	font-size: 20px;
+}
+div{
+	width:200px;
+	height:100px;
+}
+</style>
+</head>
+<body>
+<div>
+<dl>
+<dt style="cursor:pointer">Java</dt>
+	<dd><img src="images/data.png"/>Java1</dd>
+	<dd><img src="images/data.png"/>Java2</dd>
+</dl>
+ 
+
+<dl>
+<dt style="cursor:pointer">Android</dt>
+	<dd><img src="images/data.png"/>Android1 </dd>
+	<dd><img src="images/data.png"/>Android2 </dd>
+</dl>
+
+
+<dl>
+<dt style="cursor:pointer">Database</dt>
+	<dd><img src="images/data.png"/>Database1</dd>
+	<dd><img src="images/data.png"/>Database2</dd>
+</dl>
+
+
+<dl>
+<dt style="cursor:pointer">算法</dt>
+	<dd><img src="images/data.png"/>算法1</dd>
+	<dd><img src="images/data.png"/>算法2</dd>
+</dl>
+</div>
+
+</body>
+</html>

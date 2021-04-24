@@ -4,7 +4,6 @@ public class Resource {
 	private int id;
 	private String name;
 	private String type;
-	private String url;
 	private int root;
 	public int getId() {
 		return id;
@@ -24,28 +23,21 @@ public class Resource {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getUrl() {
-		return url;
-	}
-	public void setUrl(String url) {
-		this.url = url;
-	}
 	public int getRoot() {
 		return root;
 	}
 	public void setRoot(int root) {
 		this.root = root;
 	}
-	public Resource() {
-		super();
-	}
-	public Resource(int id, String name, String type, String url, int root) {
+	public Resource(int id, String name, String type, int root) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
-		this.url = url;
 		this.root = root;
+	}
+	public Resource() {
+		super();
 	}
 	
 }

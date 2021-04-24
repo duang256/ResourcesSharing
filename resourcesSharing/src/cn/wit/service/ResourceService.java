@@ -9,4 +9,7 @@ public interface ResourceService {
 	List<Resource> getAndroidResource();
 	List<Resource> getDatabaseResource();
 	List<Resource> getAlgorithmResource();
+	
+	List<Resource> getAllDynamicResource();
+	void addDynamicResource(String name);
 }

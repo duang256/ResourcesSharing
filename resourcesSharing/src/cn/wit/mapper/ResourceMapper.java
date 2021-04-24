@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 import cn.wit.pojo.*;
 public interface ResourceMapper {
+	//静态资源
 	@Select("select *from resource where type='Java'")
 	public List<Resource> selJavaResource();
 	@Select("select *from resource where type='Android'")
@@ -13,4 +14,11 @@ public interface ResourceMapper {
 	public List<Resource> selDatabaseResource();
 	@Select("select *from resource where type='Algorithm'")
 	public List<Resource> selAlgorithmResource();
+	
+	//动态资源
+	@Select("select *from resource where root=0")
+	public List<Resource> selAllDynamicReosource();
+	//上传资源
+	@Select("insert into resource values(default,#{0},'dynamic',0)")
+	public List<Resource> insDynamicReosource(String name);
 }
