@@ -5,6 +5,7 @@ public class Resource {
 	private String name;
 	private String type;
 	private int root;
+	private String staticFileName;
 	public int getId() {
 		return id;
 	}
@@ -29,15 +30,23 @@ public class Resource {
 	public void setRoot(int root) {
 		this.root = root;
 	}
-	public Resource(int id, String name, String type, int root) {
+	public String getStaticFileName() {
+		return staticFileName;
+	}
+	public void setStaticFileName(String staticFileName) {
+		this.staticFileName = staticFileName;
+	}
+	public Resource(int id, String name, String type, int root, String staticFileName) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.root = root;
+		this.staticFileName = staticFileName;
 	}
 	public Resource() {
 		super();
 	}
+	
 	
 }

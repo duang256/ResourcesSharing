@@ -9,4 +9,6 @@ public interface PostService {
 	List<String> selAllComment(int id);
 	void insComment(int pid,String comment);
 	void insQuestion(Post post);
+	void delPost(int id);
+	void delOneComment(String comment);
 }

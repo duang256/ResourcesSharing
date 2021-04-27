@@ -40,5 +40,9 @@ public class ResourceServiceImpl implements ResourceService{
 	public void addDynamicResource(String name) {
 		 resourceMapper.insDynamicReosource(name);
 	}
+	@Override
+	public void delStaticFileName(String staticFileName) {
+		resourceMapper.delStaticFileName(staticFileName);
+	}
 
 }

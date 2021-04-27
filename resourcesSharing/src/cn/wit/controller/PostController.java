@@ -62,6 +62,44 @@ public class PostController {
 	}
 	
 	
+	/**
+	 * 管理员删除帖子
+	 * 	同时删除帖子和它的所有评论
+	 */
+	@RequestMapping("/delPost")
+	@ResponseBody
+	public List<Post> delPost(int id,HttpServletRequest request){
+		postService.delPost(id);
+		
+		//更新论坛
+		List<Post> posts = postService.selAllPost();
+		for (Post p : posts) {
+			List<String> comments = postService.selAllComment(p.getId());
+			p.setComment(comments);
+		}
+		request.setAttribute("posts", posts);
+		return posts;
+	}
+	
+	/**
+	 * 管理员删除评论
+	 * 	找到该评论对应的帖子，并找出其id
+	 */
+	@RequestMapping("/delComment")
+	@ResponseBody
+	public List<Post> delComment(String comment,HttpServletRequest request){
+		
+		postService.delOneComment(comment);
+		
+		//更新论坛
+		List<Post> posts = postService.selAllPost();
+		for (Post p : posts) {
+			List<String> comments = postService.selAllComment(p.getId());
+			p.setComment(comments);
+		}
+		request.setAttribute("posts", posts);
+		return posts;
+	}
 	
 	
 }

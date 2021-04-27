@@ -36,4 +36,15 @@ public class PostServiceImpl implements PostService{
 		postMapper.insPost(post);
 	}
 
+	@Override
+	public void delPost(int id) {
+		postMapper.delPost(id);
+		postMapper.delAllCommentByPid(id);
+	}
+
+	@Override
+	public void delOneComment(String comment) {
+		postMapper.delCommentById(comment);
+	}
+
 }

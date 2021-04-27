@@ -27,23 +27,12 @@ public class ResourceController {
 	private ResourceService resourceService;
 	
 	
-	@RequestMapping("/jdkInstall")
-	public String jdkInstall(){
-		return "resources/articleResources/jdkInstall";
+	@RequestMapping("/staticResource")
+	public String staticResource(String staticFileName){
+		return "resources/articleResources/"+staticFileName;
 	}
 	
-	@RequestMapping("/androidInstall")
-	public String androidInstall(){
-		return "resources/articleResources/androidInstall";
-	}
-	@RequestMapping("/mysqlAction")
-	public String mysql(){
-		return "resources/articleResources/mysqlAction";
-	}
-	@RequestMapping("/leetcode135")
-	public String algorithmInstall(){
-		return "resources/articleResources/leetcode135";
-	}
+	
 	@RequestMapping("/download")
 	public void download(@RequestParam("file")String fileName,HttpServletResponse resp,HttpServletRequest req) throws ServletException, IOException{
 		//设置响应头某个属性的值就可以用serHeader、，包括之前的content-Type也可以用setHeader设置
@@ -77,7 +66,7 @@ public class ResourceController {
 	
 	@RequestMapping("/upload")
 	@ResponseBody
-	public List<Resource> demo(MultipartFile file,HttpServletRequest req,HttpServletResponse resp) throws IOException, ServletException{ //这里参数名必须和表单中name一致
+	public List<Resource> upload(MultipartFile file,HttpServletRequest req,HttpServletResponse resp) throws IOException, ServletException{ //这里参数名必须和表单中name一致
 		//获取文件名 有的浏览器文件名不带路径，有的浏览器文件名是全路径的
 		String fileName = file.getOriginalFilename();
 		System.out.println("filename:"+fileName);
@@ -94,4 +83,45 @@ public class ResourceController {
 		return allDynamicResource;
 		
 	}
+	
+	@RequestMapping("/delStaticFile")
+	@ResponseBody
+	public List<Resource> delStaticFile(String staticFileName,String type,HttpServletRequest request){
+		//从数据库中删除
+		resourceService.delStaticFileName(staticFileName);
+		//从资源文件中删除,暂时不做这个操作
+		
+		//返回更新的resource
+		switch (type) {
+			case "Java":{
+				List<Resource> javaResource = resourceService.getJavaResource();
+				//改request
+				request.setAttribute("javaResource", javaResource);
+				return javaResource;
+			}
+			case "Android":{
+				List<Resource> androidResource = resourceService.getAndroidResource();
+				//改request
+				request.setAttribute("androidResource", androidResource);
+				return androidResource;
+			}
+			case "Database":{
+				List<Resource> databaseResource = resourceService.getDatabaseResource();
+				//改request
+				request.setAttribute("databaseResource", databaseResource);
+				return databaseResource;
+			}
+			case "Algorithm":{
+				List<Resource> algorithmResource = resourceService.getAlgorithmResource();
+				//改request
+				request.setAttribute("algorithmResource", algorithmResource);
+				return algorithmResource;
+			}
+			default:
+				return null;
+		}
+	}
+	
+	
+	
 }

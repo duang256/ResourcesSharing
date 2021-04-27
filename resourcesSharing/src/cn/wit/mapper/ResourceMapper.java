@@ -2,6 +2,7 @@ package cn.wit.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Select;
 import cn.wit.pojo.*;
 public interface ResourceMapper {
@@ -19,6 +20,11 @@ public interface ResourceMapper {
 	@Select("select *from resource where root=0")
 	public List<Resource> selAllDynamicReosource();
 	//上传资源
-	@Select("insert into resource values(default,#{0},'dynamic',0)")
+	@Select("insert into resource values(default,#{0},'dynamic',0,'')")
 	public List<Resource> insDynamicReosource(String name);
+	
+	//删除一篇文章
+	@Delete("delete from resource where staticFileName=#{staticFileName}")
+	public void delStaticFileName(String staticFileName);
+	
 }

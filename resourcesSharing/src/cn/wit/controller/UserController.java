@@ -37,33 +37,63 @@ public class UserController {
 			System.out.println(user.getPassword());
 			User u = userService.checkUserLoginService(user);
 			if(u!=null){
-				//用户信息
-				request.getSession().setAttribute("user", u);
 				
-				//所有静态资源
-				List<Resource> javaResource = resourceService.getJavaResource();
-				List<Resource> androidResource = resourceService.getAndroidResource();
-				List<Resource> databaseResource = resourceService.getDatabaseResource();
-				List<Resource> algorithmResource = resourceService.getAlgorithmResource();
-				request.setAttribute("javaResource", javaResource);
-				request.setAttribute("androidResource", androidResource);
-				request.setAttribute("databaseResource", databaseResource);
-				request.setAttribute("algorithmResource", algorithmResource);
-				
-				//加载所有帖子
-				List<Post> posts = postService.selAllPost();
-				for (Post post : posts) {
-					List<String> comment = postService.selAllComment(post.getId());
-					post.setComment(comment);
+				if(u.getRoot()==0){
+					//用户信息
+					request.getSession().setAttribute("user", u);
+					
+					//所有静态资源
+					List<Resource> javaResource = resourceService.getJavaResource();
+					List<Resource> androidResource = resourceService.getAndroidResource();
+					List<Resource> databaseResource = resourceService.getDatabaseResource();
+					List<Resource> algorithmResource = resourceService.getAlgorithmResource();
+					request.setAttribute("javaResource", javaResource);
+					request.setAttribute("androidResource", androidResource);
+					request.setAttribute("databaseResource", databaseResource);
+					request.setAttribute("algorithmResource", algorithmResource);
+					
+					//加载所有帖子
+					List<Post> posts = postService.selAllPost();
+					for (Post post : posts) {
+						List<String> comment = postService.selAllComment(post.getId());
+						post.setComment(comment);
+					}
+					request.setAttribute("posts", posts);
+					
+					//静态资源
+					List<Resource> dynamicResource=resourceService.getAllDynamicResource();
+					request.setAttribute("dynamicResource", dynamicResource);
+					return "main";
 				}
-				request.setAttribute("posts", posts);
+				if(u.getRoot()==1){
+					//用户信息
+					request.getSession().setAttribute("user", u);
+					//所有静态资源
+					List<Resource> javaResource = resourceService.getJavaResource();
+					List<Resource> androidResource = resourceService.getAndroidResource();
+					List<Resource> databaseResource = resourceService.getDatabaseResource();
+					List<Resource> algorithmResource = resourceService.getAlgorithmResource();
+					request.setAttribute("javaResource", javaResource);
+					request.setAttribute("androidResource", androidResource);
+					request.setAttribute("databaseResource", databaseResource);
+					request.setAttribute("algorithmResource", algorithmResource);
+					
+					//加载所有帖子
+					List<Post> posts = postService.selAllPost();
+					for (Post post : posts) {
+						List<String> comment = postService.selAllComment(post.getId());
+						post.setComment(comment);
+					}
+					request.setAttribute("posts", posts);
+					
+					//静态资源
+					List<Resource> dynamicResource=resourceService.getAllDynamicResource();
+					request.setAttribute("dynamicResource", dynamicResource);
+					return "administrator";
+				}else{
+					return "error";
+				}
 				
-				//静态资源
-				List<Resource> dynamicResource=resourceService.getAllDynamicResource();
-				request.setAttribute("dynamicResource", dynamicResource);
-				
-				
-				return "main";
 			}else{
 				return "error";
 			}
@@ -82,9 +112,10 @@ public class UserController {
 	public String updPassword(HttpServletRequest request,String oldPassword,String newPassword){
 		try{
 			
-			System.out.println(oldPassword);
-			System.out.println(newPassword);
+			System.out.println("原密码"+oldPassword);
+			System.out.println("新密码"+newPassword);
 			User user = (User) request.getSession().getAttribute("user");
+			System.out.println("密码："+user.getPassword());
 			if(user.getPassword().equals(oldPassword)){
 				System.out.println("验证成功");
 				System.out.println("update user set password="+newPassword+" where id="+user.getId());

@@ -278,26 +278,26 @@ dd{
 				<dl>
 					<dt style="cursor:pointer">Java</dt>
 					<c:forEach items="${javaResource}" var="java">
-						<dd>  <a href="/resourcesSharing/jdkInstall">${java.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${java.staticFileName }">${java.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 			
 				<dl>
 					<dt style="cursor:pointer">Android</dt>
 					<c:forEach items="${androidResource}" var="android">
-						<dd>  <a href="/resourcesSharing/androidInstall">${android.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${android.staticFileName }">${android.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 				<dl>
 					<dt style="cursor:pointer">Database</dt>
 					<c:forEach items="${databaseResource}" var="database">
-						<dd>  <a href="/resourcesSharing/mysqlAction">${database.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${database.staticFileName }">${database.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 				<dl>
 					<dt style="cursor:pointer">算法</dt>
 					<c:forEach items="${algorithmResource}" var="algorithm">
-						<dd>  <a href="/resourcesSharing/leetcode135">${algorithm.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${algorithm.staticFileName }">${algorithm.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 			</div>

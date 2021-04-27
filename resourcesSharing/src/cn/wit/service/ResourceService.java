@@ -12,4 +12,5 @@ public interface ResourceService {
 	
 	List<Resource> getAllDynamicResource();
 	void addDynamicResource(String name);
+	void delStaticFileName(String staticFileName);
 }
