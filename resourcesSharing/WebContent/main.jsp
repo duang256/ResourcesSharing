@@ -118,7 +118,7 @@ var xmlHttp = new XMLHttpRequest();
 	   alert(file);
 	   formData.append('file',file);
 	 //发送POST请求
-	   xmlHttp.open("post","/resourcesSharing//upload",true);
+	   xmlHttp.open("post","/resourcesSharing/upload",true);
 	   xmlHttp.send(formData);
 	   xmlHttp.onreadystatechange=function(){
 			if(xmlHttp.status == 200 && xmlHttp.readyState == 4){ 
@@ -139,6 +139,17 @@ var xmlHttp = new XMLHttpRequest();
 
 
 <style>
+.button {
+    background: #E27575;
+    border: none;
+    padding: 10px 20px 10px 20px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
 body{
     background-image: url("images/mainBackground.jpg");
     background-size: cover;
@@ -278,26 +289,26 @@ dd{
 				<dl>
 					<dt style="cursor:pointer">Java</dt>
 					<c:forEach items="${javaResource}" var="java">
-						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${java.staticFileName }">${java.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?name=${java.name }">${java.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 			
 				<dl>
 					<dt style="cursor:pointer">Android</dt>
 					<c:forEach items="${androidResource}" var="android">
-						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${android.staticFileName }">${android.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?name=${android.name }">${android.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 				<dl>
 					<dt style="cursor:pointer">Database</dt>
 					<c:forEach items="${databaseResource}" var="database">
-						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${database.staticFileName }">${database.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?name=${database.name }">${database.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 				<dl>
 					<dt style="cursor:pointer">算法</dt>
 					<c:forEach items="${algorithmResource}" var="algorithm">
-						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${algorithm.staticFileName }">${algorithm.name}</a>  </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?name=${algorithm.name }">${algorithm.name}</a>  </dd>
 					</c:forEach>
 				</dl>
 			</div>
@@ -310,12 +321,15 @@ dd{
 				<form  enctype="multipart/form-data" >
 					文件：<input type="file" name="file" id="file"><br>
 				</form> 
-				<button id="upload" onclick="upload()">上传文件</button>
+				<button id="upload" onclick="upload()"  class="button">上传文件</button>
 					
 				<div id="dynamicfiles">
 					<!--下载  -->
 					<c:forEach items="${dynamicResource}" var="dResource"> 
-						${dResource.name}<a  href="download?file=${dResource.name}"  style="text-decoration:underline;color: blue;">下载</a><br>
+						${dResource.name}
+						<a  href="download?file=${dResource.name}"  style="margin-bottom: 10px;">
+							<img  src="images/download.png">
+						</a><br>
 					</c:forEach>
 				</div>
 			</div>

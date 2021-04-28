@@ -18,18 +18,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import cn.wit.pojo.Post;
 import cn.wit.pojo.Resource;
+import cn.wit.pojo.User;
+import cn.wit.service.PostService;
 import cn.wit.service.ResourceService;
 
 @Controller
 public class ResourceController {
 	@Autowired
 	private ResourceService resourceService;
-	
+	@Autowired
+	private PostService postService;
 	
 	@RequestMapping("/staticResource")
-	public String staticResource(String staticFileName){
-		return "resources/articleResources/"+staticFileName;
+	public String staticResource(String name,HttpServletRequest request){
+		String html=resourceService.getHtml(name);
+		request.setAttribute("html", html);
+		return "article";
 	}
 	
 	
@@ -86,9 +92,9 @@ public class ResourceController {
 	
 	@RequestMapping("/delStaticFile")
 	@ResponseBody
-	public List<Resource> delStaticFile(String staticFileName,String type,HttpServletRequest request){
+	public List<Resource> delStaticFile(String name,String type,HttpServletRequest request){
 		//从数据库中删除
-		resourceService.delStaticFileName(staticFileName);
+		resourceService.delStaticFileName(name);
 		//从资源文件中删除,暂时不做这个操作
 		
 		//返回更新的resource
@@ -120,6 +126,35 @@ public class ResourceController {
 			default:
 				return null;
 		}
+	}
+	
+	
+	@RequestMapping("/writeArticle")
+	public String writeArticle(Resource resource,HttpServletRequest request){
+		//将它存入数据库
+		resourceService.addStaticResource(resource);
+		//所有静态资源
+		List<Resource> javaResource = resourceService.getJavaResource();
+		List<Resource> androidResource = resourceService.getAndroidResource();
+		List<Resource> databaseResource = resourceService.getDatabaseResource();
+		List<Resource> algorithmResource = resourceService.getAlgorithmResource();
+		request.setAttribute("javaResource", javaResource);
+		request.setAttribute("androidResource", androidResource);
+		request.setAttribute("databaseResource", databaseResource);
+		request.setAttribute("algorithmResource", algorithmResource);
+		
+		//加载所有帖子
+		List<Post> posts = postService.selAllPost();
+		for (Post post : posts) {
+			List<String> comment = postService.selAllComment(post.getId());
+			post.setComment(comment);
+		}
+		request.setAttribute("posts", posts);
+		
+		//静态资源
+		List<Resource> dynamicResource=resourceService.getAllDynamicResource();
+		request.setAttribute("dynamicResource", dynamicResource);
+		return "administrator";
 	}
 	
 	

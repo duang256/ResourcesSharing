@@ -20,6 +20,7 @@
       <mvc:resources location="/js/" mapping="/js/**"></mvc:resources>
       <mvc:resources location="/css/" mapping="/css/**"></mvc:resources>
       <mvc:resources location="/images/" mapping="/images/**"></mvc:resources>
+      <mvc:resources location="/editormd/" mapping="/editormd/**"></mvc:resources>
       
       
       <!--视图解析器  ,可以设置简化jsp的路径，在controller中return jsp的时候，经过解析器拼写完整路径

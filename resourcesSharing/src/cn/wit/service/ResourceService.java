@@ -12,5 +12,8 @@ public interface ResourceService {
 	
 	List<Resource> getAllDynamicResource();
 	void addDynamicResource(String name);
-	void delStaticFileName(String staticFileName);
+	void delStaticFileName(String name);
+	
+	void addStaticResource(Resource resource);
+	String getHtml(String name);
 }

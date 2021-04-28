@@ -41,8 +41,16 @@ public class ResourceServiceImpl implements ResourceService{
 		 resourceMapper.insDynamicReosource(name);
 	}
 	@Override
-	public void delStaticFileName(String staticFileName) {
-		resourceMapper.delStaticFileName(staticFileName);
+	public void delStaticFileName(String name) {
+		resourceMapper.delStaticFileName(name);
+	}
+	@Override
+	public void addStaticResource(Resource resource) {
+		resourceMapper.insStaticResource(resource);
+	}
+	@Override
+	public String getHtml(String name) {
+		return resourceMapper.selhtml(name);
 	}
 
 }

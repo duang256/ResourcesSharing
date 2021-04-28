@@ -27,10 +27,10 @@ $("dt").live("click",function(){
         		var data=eval(xmlDoc);
         		var result="<hr color='#000000'>";
         		for(var i=0;i<data.length;i++){
-	      				result+="问题"+(i+1)+"："+data[i].question+"<Button onclick=\"delPost("+data[i].id+");\""+">删除</Button><br><br>";
+	      				result+="问题"+(i+1)+"："+data[i].question+"&nbsp&nbsp"+"<a  onclick=\"delPost('"+data[i].id+"');\"> <img  onmouseover='deleteMouseOver(this)' onmouseout='deleteMouseOut(this)' src='images/delete1.png'></a><br><br>";
 	      				var comments=data[i].comment;
 	      				for(var j=0;j<comments.length;j++){
-	      					result+=(j+1) + "楼：" + comments[j] + "<Button onclick=\"delComment('" + comments[j]+ "')\">删除</Button><br>";
+	      					result+=(j+1) + "楼：" + comments[j] + "<a  onclick=\"delComment('"+comments[j]+"');\"> <img  onmouseover='deleteMouseOver(this)' onmouseout='deleteMouseOut(this)' src='images/delete1.png'></a><br><br>";;
 	      				}
 	      				result+="<hr color='#000000'>";
 	      				
@@ -52,15 +52,15 @@ $("dt").live("click",function(){
         		var data=eval(xmlDoc);
         		var result="<hr color='#000000'>";
         		for(var i=0;i<data.length;i++){
-        			result+="问题"+(i+1)+"："+data[i].question+"<Button onclick=\"delPost("+data[i].id+");\""+">删除</Button><br><br>";
+	      				result+="问题"+(i+1)+"："+data[i].question+"&nbsp&nbsp"+"<a  onclick=\"delPost('"+data[i].id+"');\"> <img  onmouseover='deleteMouseOver(this)' onmouseout='deleteMouseOut(this)' src='images/delete1.png'></a><br><br>";
 	      				var comments=data[i].comment;
 	      				for(var j=0;j<comments.length;j++){
-	      					result+=(j+1) + "楼：" + comments[j] + "<Button onclick=\"delComment('" + comments[j]+ "')\">删除</Button><br>";
+	      					result+=(j+1) + "楼：" + comments[j] + "<a  onclick=\"delComment('"+comments[j]+"');\"> <img  onmouseover='deleteMouseOver(this)' onmouseout='deleteMouseOut(this)' src='images/delete1.png'></a><br><br>";;
 	      				}
 	      				result+="<hr color='#000000'>";
 	      				
-	      		} 
-	      		$("#articles").html(result);     
+	      			} 
+	      			$("#articles").html(result);     
         	}
        }
 	}
@@ -68,8 +68,8 @@ $("dt").live("click",function(){
 	/*ajax删除并更新静态文件 
 	更新整个静态区传参不方便，所以对每个块刷新
 	*/
-	function delJava(staticFileName,type){
-		var url="/resourcesSharing/delStaticFile?staticFileName="+staticFileName+"&type="+type;
+	function delJava(name,type){
+		var url="/resourcesSharing/delStaticFile?name="+name+"&type="+type;
 		//get请求
         xmlHttp.open("get",url, true);
         xmlHttp.send();
@@ -79,7 +79,8 @@ $("dt").live("click",function(){
         		var data=eval(xmlDoc);
         		var result="<dt style='cursor:pointer'>Java</dt>";
         		for(var i=0;i<data.length;i++){
-        			result+="<dd>  <a href='/resourcesSharing/staticResource?staticFileName="+data[i].staticFileName+"'>"+data[i].name+"</a> <button onclick=\"delJava(\'"+data[i].staticFileName+"','Java');\">删除</button> </dd>";
+        			result+="<dd>  <a href='/resourcesSharing/staticResource?name="+data[i].name+"'>"+data[i].name+"</a>";
+        			result+= "<a  onclick=\"delJava('"+data[i].name +"','Java');\">"+"<img  onmouseover='deleteMouseOver(this)' onmouseout='deleteMouseOut(this)' src='images/delete1.png'></a></dd>";
         		}
 	      		$("#java").html(result);     
         	}
@@ -87,8 +88,8 @@ $("dt").live("click",function(){
         
 	}
 	
-	function delAndroid(staticFileName,type){
-		var url="/resourcesSharing/delStaticFile?staticFileName="+staticFileName+"&type="+type;
+	function delAndroid(name,type){
+		var url="/resourcesSharing/delStaticFile?name="+name+"&type="+type;
 		//get请求
         xmlHttp.open("get",url, true);
         xmlHttp.send();
@@ -98,15 +99,16 @@ $("dt").live("click",function(){
         		var data=eval(xmlDoc);
         		var result="<dt style='cursor:pointer'>Android</dt>";
         		for(var i=0;i<data.length;i++){
-        			result+="<dd>  <a href='/resourcesSharing/staticResource?staticFileName="+data[i].staticFileName+"'>"+data[i].name+"</a> <button onclick=\"delAndroid(\'"+data[i].staticFileName+"','Android');\">删除</button> </dd>";
+        			result+="<dd>  <a href='/resourcesSharing/staticResource?name="+data[i].name+"'>"+data[i].name+"</a>";
+        			result+= "<a  onclick=\"delAndroid('"+data[i].name +"','Android');\">"+"<img  onmouseover='deleteMouseOver(this)' onmouseout='deleteMouseOut(this)' src='images/delete1.png'></a></dd>";
         		}
 	      		$("#android").html(result);     
         	}
        }
         
 	}
-	function delDatabase(staticFileName,type){
-		var url="/resourcesSharing/delStaticFile?staticFileName="+staticFileName+"&type="+type;
+	function delDatabase(name,type){
+		var url="/resourcesSharing/delStaticFile?name="+name+"&type="+type;
 		//get请求
         xmlHttp.open("get",url, true);
         xmlHttp.send();
@@ -116,15 +118,16 @@ $("dt").live("click",function(){
         		var data=eval(xmlDoc);
         		var result="<dt style='cursor:pointer'>Java</dt>";
         		for(var i=0;i<data.length;i++){
-        			result+="<dd>  <a href='/resourcesSharing/staticResource?staticFileName="+data[i].staticFileName+"'>"+data[i].name+"</a> <button onclick=\"delDatabase(\'"+data[i].staticFileName+"','Database');\">删除</button> </dd>";
+        			result+="<dd>  <a href='/resourcesSharing/staticResource?name="+data[i].name+"'>"+data[i].name+"</a> ";
+        			result+= "<a  onclick=\"delDatabase('"+data[i].name +"','Database');\">"+"<img  onmouseover='deleteMouseOver(this)' onmouseout='deleteMouseOut(this)' src='images/delete1.png'></a></dd>";
         		}
 	      		$("#database").html(result);     
         	}
        }
         
 	}
-	function delAlgorithm(staticFileName,type){
-		var url="/resourcesSharing/delStaticFile?staticFileName="+staticFileName+"&type="+type;
+	function delAlgorithm(name,type){
+		var url="/resourcesSharing/delStaticFile?name="+name+"&type="+type;
 		//get请求
         xmlHttp.open("get",url, true);
         xmlHttp.send();
@@ -134,7 +137,8 @@ $("dt").live("click",function(){
         		var data=eval(xmlDoc);
         		var result="<dt style='cursor:pointer'>Java</dt>";
         		for(var i=0;i<data.length;i++){
-        			result+="<dd>  <a href='/resourcesSharing/staticResource?staticFileName="+data[i].staticFileName+"'>"+data[i].name+"</a> <button onclick=\"delAlgorithm(\'"+data[i].staticFileName+"','Algorithm');\">删除</button> </dd>";
+        			result+="<dd>  <a href='/resourcesSharing/staticResource?name="+data[i].name+"'>"+data[i].name+"</a> ";
+        			result+= "<a  onclick=\"delAlgorithm('"+data[i].name +"','Algorithm');\">"+"<img  onmouseover='deleteMouseOver(this)' onmouseout='deleteMouseOut(this)' src='images/delete1.png'></a></dd>";
         		}
 	      		$("#algorithm").html(result);     
         	}
@@ -142,6 +146,13 @@ $("dt").live("click",function(){
         
 	}
 
+	
+	function deleteMouseOver(del){
+		del.setAttribute("src", "images/delete2.png");
+	}
+	function deleteMouseOut(del){
+		del.setAttribute("src", "images/delete1.png");
+	}
 </script>
 
 <style type="text/css">
@@ -164,7 +175,16 @@ body{
 	border-radius: 5px;
 }
 
-
+#editor{
+	background: #E27575;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    box-shadow: 1px 1px 5px #B6B6B6;
+    border-radius: 3px;
+    text-shadow: 1px 1px 1px #9E3F3F;
+    cursor: pointer;
+}
 
  .box{
  	padding:20px;
@@ -269,29 +289,50 @@ dd{
 				<dl id="java">
 					<dt style="cursor:pointer">Java</dt>
 					<c:forEach items="${javaResource}" var="java">
-						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${java.staticFileName }">${java.name}</a> <button onclick="delJava('${java.staticFileName}','Java');">删除</button> </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?name=${java.name }">${java.name}</a>
+						 <a  onclick="delJava('${java.name}','Java');">
+									<img  onmouseover="deleteMouseOver(this)" onmouseout="deleteMouseOut(this)" src="images/delete1.png">
+						 </a>
+						 </dd>
+						
 					</c:forEach>
 				</dl>
 			
 				<dl id="android"> 
 					<dt style="cursor:pointer">Android</dt>
 					<c:forEach items="${androidResource}" var="android">
-						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${android.staticFileName }">${android.name}</a> <button onclick="delAndroid('${android.staticFileName}','Android');">删除</button> </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?name=${android.name }">${android.name}</a> 
+						<a  onclick="delAndroid('${android.name}','Android');">
+									<img  onmouseover="deleteMouseOver(this)" onmouseout="deleteMouseOut(this)" src="images/delete1.png">
+						 </a>
+						 </dd>
 					</c:forEach>
 				</dl>
 				<dl id="database">
 					<dt style="cursor:pointer">Database</dt>
 					<c:forEach items="${databaseResource}" var="database">
-						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${database.staticFileName }">${database.name}</a> <button onclick="delDatabase('${database.staticFileName}','Database');">删除</button> </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?name=${database.name }">${database.name}</a>
+						<a  onclick="delDatabase('${database.name}','Database');">
+									<img  onmouseover="deleteMouseOver(this)" onmouseout="deleteMouseOut(this)" src="images/delete1.png">
+						</a>
+						</dd>
 					</c:forEach>
 				</dl>
 				<dl id="algorithm">
 					<dt style="cursor:pointer">算法</dt>
 					<c:forEach items="${algorithmResource}" var="algorithm">
-						<dd>  <a href="/resourcesSharing/staticResource?staticFileName=${algorithm.staticFileName }">${algorithm.name}</a> <button onclick="Algorithm'${algorithm.staticFileName}','Algorithm');">删除</button> </dd>
+						<dd>  <a href="/resourcesSharing/staticResource?name=${algorithm.name }">${algorithm.name}</a> 
+						<a  onclick="Algorithm'${algorithm.name}','Algorithm');">
+									<img  onmouseover="deleteMouseOver(this)" onmouseout="deleteMouseOut(this)" src="images/delete1.png">
+						</a>
+						</dd>
 					</c:forEach>
 				</dl>
+				<br><br><br>
+				<a href="editor.jsp"><button id="editor" style="display:block;margin:0 auto;">写文章</button></a>
+				
 			</div>
+			
 			
 		</div>
 		
@@ -302,9 +343,16 @@ dd{
 			<div class="article" id="articles"><br>
 				 <hr color="#000000">
 				 <c:forEach items="${posts}" var="post" varStatus="sta">
-					问题${sta.index+1}：${post.question }   <Button onclick="delPost(${post.id });" >删除</Button> <br><br>
+					问题${sta.index+1}：${post.question } &nbsp&nbsp
+					 <a  onclick="delPost(${post.id });">
+									<img  onmouseover="deleteMouseOver(this)" onmouseout="deleteMouseOut(this)" src="images/delete1.png">
+					 </a><br><br>
 					<c:forEach items="${post.comment }" var="comment" varStatus="status">
-						       ${status.index+1}楼： ${comment} <Button onclick="delComment('${comment}')" >删除</Button><br>
+						       ${status.index+1}楼： ${comment} &nbsp&nbsp
+						       <a  onclick="delComment('${comment}')">
+									<img  onmouseover="deleteMouseOver(this)" onmouseout="deleteMouseOut(this)" src="images/delete1.png">
+							   </a>
+							   <br><br>
 					</c:forEach><br>
 					<hr color="#000000">
 				</c:forEach> 
