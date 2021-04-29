@@ -2,6 +2,7 @@ package cn.wit.controller;
 
 
 import java.text.DateFormat;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 
 import cn.wit.mapper.UserMapper;
 import cn.wit.pojo.Post;
@@ -32,6 +34,11 @@ public class UserController {
 	
 	@RequestMapping("/login")
 	public String login(User user,HttpServletRequest request){
+		/*if(request.getSession().getAttribute("user")!=null){
+			request.getSession().removeAttribute("user");
+			return "redirect:/login.jsp";
+		}*/
+		
 		try{
 			System.out.println(user.getUsername());
 			System.out.println(user.getPassword());
@@ -63,6 +70,7 @@ public class UserController {
 					//¾²Ì¬×ÊÔ´
 					List<Resource> dynamicResource=resourceService.getAllDynamicResource();
 					request.setAttribute("dynamicResource", dynamicResource);
+					
 					return "main";
 				}
 				if(u.getRoot()==1){
@@ -136,6 +144,7 @@ public class UserController {
 		User u=(User) request.getSession().getAttribute("user");
 		user.setId(u.getId());
 		user.setRoot(0);
+		user.setPassword(u.getPassword());
 		request.getSession().setAttribute("user", user);
 		
 		try{

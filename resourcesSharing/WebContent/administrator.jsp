@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>资源共享平台</title>
 <script type="text/javascript" src="js/jquery-1.7.2.js"></script>
 <script type="text/javascript">
 $("dt").live("click",function(){
@@ -198,6 +198,7 @@ body{
 	position:fixed;
 	margin-bottom: 20px;
 	border-radius: 5px;
+	height:80%;
 
 }
 .staticResource{
@@ -205,21 +206,22 @@ body{
 	margin-right: 15px;
 	background-color: #FFFFFF;
 	border-radius: 10px;
-	height: 700px;
+	height: 100%;
 }
 .content{
 	display: flex;
+	width: 100%;
 }
 .dynamicResource{
 	background-color: #FFFFFF;
 	width:300px;
 	border-radius: 10px;
-	height: 700px;
+	height: 100%;
 	
 	
 }
 .article{
-	width:1000px;
+	width:100%;
 	background-color: #F2F2F2;
 	border-radius: 5px;
 	background-color: #FFFFFF;
@@ -234,7 +236,7 @@ body{
 	margin-top:20px;
 }
 #question{
-	width: 990px;
+	width: 100%;
 	height: 100px;
 	resize:none;
 	border-radius: 5px;
@@ -249,7 +251,8 @@ body{
 	margin-bottom: 5px;
 }
 #posts{
-	margin-left: 650px;
+	margin-left: 28%;
+	width:60%;
 }
 a{
 	text-decoration:none;
@@ -367,4 +370,6 @@ dd{
 	
 </div> 
 </body>
+
+
 </html>

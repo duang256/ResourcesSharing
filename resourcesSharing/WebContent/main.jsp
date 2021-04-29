@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -156,7 +157,7 @@ body{
 }
 /* 标题 */
 .header {
-    padding: 30px;
+    padding: 20px;
     text-align: center;
     color: white;
     
@@ -186,10 +187,11 @@ body{
 	
 	margin-right:100px;
 	display: flex;
-	width:25%;
+	width:35%;
 	position:fixed;
 	margin-bottom: 20px;
 	border-radius: 5px;
+	height:80%;
 
 }
 .staticResource{
@@ -197,21 +199,21 @@ body{
 	margin-right: 15px;
 	background-color: #FFFFFF;
 	border-radius: 10px;
-	height: 700px;
+	height:100%
 }
 .content{
 	display: flex;
+	width:100%;
 }
 .dynamicResource{
 	background-color: #FFFFFF;
 	width:300px;
 	border-radius: 10px;
-	height: 700px;
+	height:100%
 	
 	
 }
 .article{
-	width:1000px;
 	background-color: #F2F2F2;
 	border-radius: 5px;
 	background-color: #FFFFFF;
@@ -226,7 +228,7 @@ body{
 	margin-top:20px;
 }
 #question{
-	width: 990px;
+	width: 100%;
 	height: 100px;
 	resize:none;
 	border-radius: 5px;
@@ -236,11 +238,13 @@ body{
 	
 }
 #comment{
+
 	width:300px;
 	border-radius: 5px;
 	margin-bottom: 5px;
 }
 #posts{
+	width:60%;
 	margin-left: 650px;
 }
 a{
@@ -250,8 +254,8 @@ a{
 }
 .questionImg{
 	position:absolute;
-	top:290px;
-	left:1600px;
+	top:29%;
+	right:6%;
 }
 dt{
 	background-color:#D8D8D8;
