@@ -95,7 +95,7 @@ public class UserController {
 				}
 				
 			}else{
-				return "error";
+				return "redirect:/login.jsp?error=yes";
 			}
 		}catch(Exception e){
 			return "error";

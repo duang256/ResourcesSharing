@@ -27,6 +27,10 @@ p{
     font-weight: 400;
     line-height: 26px;
     }
+img{
+	margin:20px;
+	width: 800px;
+}
 .content{
 font-size: 18px;
 color: #4d4d4d;

@@ -121,7 +121,12 @@ body {
     </label>
     <label>
         <span>性别 :</span>
-       <input type="text" placeholder="性别" name="sex" id="sex" value="${user.sex}"><br>
+        <label>
+				<input type="radio" name="sex" value="1" <c:if test="${user.sex==1}">checked</c:if> >男
+				<input type="radio" name="sex" value="0" <c:if test="${user.sex==0}">checked</c:if> >女
+		</label>
+        
+       <br>
     </label>
     <label>
         <span>生日 :</span>
